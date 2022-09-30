@@ -14,6 +14,7 @@ let get () =
 
 let to_odoc x =
   match String.split_on_char '/' x.mime_type, x.encoding with
+  | ["image"; "svg"], Noencoding -> Printf.sprintf "{%%html: %s %%}" x.data
   | "image"::_, Base64 -> Printf.sprintf "{%%html: <img src=\"data:%s;base64,%s\" /> %%}" x.mime_type x.data
   | "text"::"odoc"::[], Noencoding -> x.data
   | _ -> ""

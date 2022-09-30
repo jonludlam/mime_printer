@@ -5,6 +5,7 @@ authors: "various"
 license: "ISC"
 depends: [
   "ocaml" (>= "4.04")
+  "dune"
 ]
 build : [
   ["dune" "subst"] {pinned}
