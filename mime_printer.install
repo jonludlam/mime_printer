@@ -1,0 +1,15 @@
+lib: [
+  "_build/install/default/lib/mime_printer/META"
+  "_build/install/default/lib/mime_printer/dune-package"
+  "_build/install/default/lib/mime_printer/mime_printer.a"
+  "_build/install/default/lib/mime_printer/mime_printer.cma"
+  "_build/install/default/lib/mime_printer/mime_printer.cmi"
+  "_build/install/default/lib/mime_printer/mime_printer.cmt"
+  "_build/install/default/lib/mime_printer/mime_printer.cmx"
+  "_build/install/default/lib/mime_printer/mime_printer.cmxa"
+  "_build/install/default/lib/mime_printer/mime_printer.ml"
+  "_build/install/default/lib/mime_printer/opam"
+]
+libexec: [
+  "_build/install/default/lib/mime_printer/mime_printer.cmxs"
+]
