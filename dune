@@ -1,4 +1,3 @@
 (library
-  (name mime_printer)
-  (public_name mime_printer))
-
+ (name mime_printer)
+ (public_name mime_printer))

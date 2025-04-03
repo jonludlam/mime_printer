@@ -6,14 +6,20 @@ let id = ref ""
 let outputs : t list ref = ref []
 
 let push ?(encoding = Noencoding) mime_type data =
-  Format.eprintf "Pushing a mime value (type=%s)\n%!" mime_type;
   outputs := { mime_type; encoding; data } :: !outputs
 
 let get () =
-  Format.eprintf "Getting mime results (%d)\n%!" (List.length !outputs);
   let result = !outputs in
   outputs := [];
   result
+
+let to_html x =
+  match String.split_on_char '/' x.mime_type, x.encoding with
+  | ["image"; "svg"], Noencoding -> Printf.sprintf "%s" x.data
+  | "image"::_, Base64 -> Printf.sprintf "<img src=\"data:%s;base64,%s\" />" x.mime_type x.data
+  | ["text"; "javascript"], Noencoding -> Printf.sprintf "<script type=\"text/javascript\">%s</script>" x.data
+  | "text"::"odoc"::[], Noencoding -> "odoc data"
+  | _ -> "erm: " ^ x.mime_type ^ " " ^ x.data
 
 let to_odoc x =
   match String.split_on_char '/' x.mime_type, x.encoding with
