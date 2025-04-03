@@ -6,9 +6,11 @@ let id = ref ""
 let outputs : t list ref = ref []
 
 let push ?(encoding = Noencoding) mime_type data =
+  Format.eprintf "Pushing a mime value (type=%s)\n%!" mime_type;
   outputs := { mime_type; encoding; data } :: !outputs
 
 let get () =
+  Format.eprintf "Getting mime results (%d)\n%!" (List.length !outputs);
   let result = !outputs in
   outputs := [];
   result
